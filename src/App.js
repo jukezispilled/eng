@@ -199,7 +199,7 @@ const TradingSimulator = () => {
   return (
     <Window className="w-full max-w-lg p-4">
       <WindowHeader className="font-custom text-xs">
-        <span>Trading Simulator</span>
+        <span>Trading Terminal</span>
       </WindowHeader>
       <WindowContent className="bg-gray-800 p-4 flex flex-col items-center">
         <div className="mb-4">
