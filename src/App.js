@@ -322,7 +322,7 @@ export default function UltraFuturisticDashboard() {
 
   return (
     <div>
-      <div className='w-screen bg-blue-900 text-[10px] py-0.5 text-cyan-400 text-center font-semibold'>CA: updating...</div>
+      <div className='w-screen bg-blue-900 text-[10px] py-0.5 text-cyan-400 text-center font-semibold'>CA: </div>
       <ThemeProvider theme={original}>
         <div className="min-h-screen bg-black text-cyan-400 p-8 font-mono relative overflow-hidden">
           <Globe />
@@ -396,7 +396,7 @@ export default function UltraFuturisticDashboard() {
               
               {/* Add TweetButton here */}
               <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center items-center">
-                <TweetButton tweetText="Joining the Engineers" twitter="@twitter" />
+                <TweetButton tweetText="Joining the Engineers" twitter="solengineers" />
               </div>
             </div>
           </div>
