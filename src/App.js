@@ -31,22 +31,34 @@ const fetchCryptoPrices = async () => {
 const QuantumTradingWidget = () => {
   const [progress, setProgress] = useState(0);
   const [statusMessage, setStatusMessage] = useState("Initializing Quantum AI...");
+  const [analysisComplete, setAnalysisComplete] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress(prev => (prev >= 100 ? 0 : prev + Math.floor(Math.random() * 20)));
-      const messages = [
-        "Analyzing historical data...",
-        "Running quantum predictions...",
-        "Evaluating risk factors...",
-        "Scanning global market trends...",
-        "Simulating market scenarios..."
-      ];
-      setStatusMessage(messages[Math.floor(Math.random() * messages.length)]);
-    }, 2000);
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setAnalysisComplete(true);
+          setStatusMessage("+ 150 SOL");
+          return 100;
+        }
+        return prev + Math.floor(Math.random() * 20);
+      });
+
+      if (!analysisComplete) {
+        const messages = [
+          "Analyzing historical data...",
+          "Running quantum predictions...",
+          "Evaluating risk factors...",
+          "Scanning global market trends...",
+          "Simulating market scenarios..."
+        ];
+        setStatusMessage(messages[Math.floor(Math.random() * messages.length)]);
+      }
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [analysisComplete]);
 
   return (
     <Window className="h-min">
@@ -56,9 +68,11 @@ const QuantumTradingWidget = () => {
       <WindowContent className="bg-gray-800 p-6 flex flex-col justify-center items-center">
         <h2 className="text-2xl font-semibold mb-4 text-cyan-300">Quantum Trading AI</h2>
         <p className="text-lg text-blue-300">{statusMessage}</p>
-        <div className="mt-4">
-          <CircularProgress value={progress} color="text-cyan-500" />
-        </div>
+        {!analysisComplete && (
+          <div className="mt-4">
+            <CircularProgress value={progress} color="text-cyan-500" />
+          </div>
+        )}
       </WindowContent>
     </Window>
   );
@@ -67,22 +81,34 @@ const QuantumTradingWidget = () => {
 const MarketSentimentAnalysis = () => {
   const [progress, setProgress] = useState(0);
   const [statusMessage, setStatusMessage] = useState("Gathering sentiment data...");
+  const [analysisComplete, setAnalysisComplete] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress(prev => (prev >= 100 ? 0 : prev + Math.floor(Math.random() * 20)));
-      const messages = [
-        "Analyzing Twitter data...",
-        "Scanning Reddit for mentions...",
-        "Tracking influencer sentiment...",
-        "Assessing news articles...",
-        "Checking forum activity..."
-      ];
-      setStatusMessage(messages[Math.floor(Math.random() * messages.length)]);
-    }, 2000);
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setAnalysisComplete(true);
+          setStatusMessage("Sentiment: Bullish");
+          return 100;
+        }
+        return prev + Math.floor(Math.random() * 20);
+      });
+
+      if (!analysisComplete) {
+        const messages = [
+          "Analyzing Twitter data...",
+          "Scanning Reddit for mentions...",
+          "Tracking influencer sentiment...",
+          "Assessing news articles...",
+          "Checking forum activity..."
+        ];
+        setStatusMessage(messages[Math.floor(Math.random() * messages.length)]);
+      }
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [analysisComplete]);
 
   return (
     <Window className="h-min">
@@ -92,9 +118,11 @@ const MarketSentimentAnalysis = () => {
       <WindowContent className="bg-gray-800 p-6 flex flex-col justify-center items-center">
         <h2 className="text-2xl font-semibold mb-4 text-yellow-300">Market Sentiment Analysis</h2>
         <p className="text-lg text-yellow-300">{statusMessage}</p>
-        <div className="mt-4">
-          <CircularProgress value={progress} color="text-yellow-500" />
-        </div>
+        {!analysisComplete && (
+          <div className="mt-4">
+            <CircularProgress value={progress} color="text-yellow-500" />
+          </div>
+        )}
       </WindowContent>
     </Window>
   );
@@ -296,12 +324,12 @@ export default function UltraFuturisticDashboard() {
     <div>
       <div className='w-screen bg-blue-900 text-[10px] py-0.5 text-cyan-400 text-center font-semibold'>CA: updating...</div>
       <ThemeProvider theme={original}>
-        <div className="min-h-screen bg-slate-300 text-cyan-400 p-8 font-mono relative overflow-hidden">
+        <div className="min-h-screen bg-black text-cyan-400 p-8 font-mono relative overflow-hidden">
           <Globe />
           <img src="eng.png" className='absolute bottom-0 right-[7.5%] w-[70%] md:w-[35%]'></img>
           <div className='absolute top-5 right-5 flex items-center z-[50]'>
             <a href="https://x.com/" className='transition ease-in-out duration-150'>
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className='size-10 md:size-12 md:hover:scale-105 transition ease-in-out duration-150 cursor-pointer' fill="#000000" viewBox="0 0 50 50">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className='size-10 md:size-12 md:hover:scale-105 transition ease-in-out duration-150 cursor-pointer' fill="#00aaff" viewBox="0 0 50 50">
                 <path d="M 6.9199219 6 L 21.136719 26.726562 L 6.2285156 44 L 9.40625 44 L 22.544922 28.777344 L 32.986328 44 L 43 44 L 28.123047 22.3125 L 42.203125 6 L 39.027344 6 L 26.716797 20.261719 L 16.933594 6 L 6.9199219 6 z"></path>
               </svg>
             </a>
