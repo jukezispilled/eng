@@ -322,7 +322,7 @@ export default function UltraFuturisticDashboard() {
 
   return (
     <div>
-      <div className='w-screen bg-blue-900 text-[10px] py-0.5 text-cyan-400 text-center font-semibold'>CA: </div>
+      <div className='w-screen bg-blue-900 text-[10px] py-0.5 text-cyan-400 text-center font-semibold'>CA: AB6a95aPkrAbg6yzSmmcmELfqCiyWkBiGdanoeGYpump</div>
       <ThemeProvider theme={original}>
         <div className="min-h-screen bg-black text-cyan-400 p-8 font-mono relative overflow-hidden">
           <Globe />
